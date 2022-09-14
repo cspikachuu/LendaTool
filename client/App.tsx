@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
@@ -15,7 +16,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+      <div >
+        <h1 id="banner">LendaTool</h1>
         <Routes>
           <Route path="/" element={<Welcome/>}/>
           <Route path="/signup" element={<SignUp />}/>
@@ -23,7 +25,7 @@ class App extends React.Component {
           <Route path="/market" element={<Market />}/>
           <Route path="/profile" element={<Profile />}/>
         </Routes>
-      </>
+      </div>
     );
   }
 }
