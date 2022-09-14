@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "lib": ["es2022"],
+    "module": "CommonJS",
+    //double check this baseUrl prop
+    "baseUrl": "./server",
+    "target": "es2022",
+    // "strict": true,
+    "jsx": "react",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "./build",
+  },
+  // "include": ["__tests__/**/*", "server/**/*", "dummy-functions", "dummy-microservice", "packages/**/*", "client/**/*"],
+  "include": ["server/**/*", "client/**/*", "client/*"],
+  // "include": ["server/**/*"],
+  "exclude": ["node_modules"],
+}
