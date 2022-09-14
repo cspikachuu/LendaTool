@@ -16,7 +16,7 @@
     "outDir": "./build",
   },
   // "include": ["__tests__/**/*", "server/**/*", "dummy-functions", "dummy-microservice", "packages/**/*", "client/**/*"],
-  "include": ["server/**/*", "client/**/*", "client/*"],
+  "include": ["server/**/*", "client/**/*", "client/*", "__tests__/server.test.ts"],
   // "include": ["server/**/*"],
   "exclude": ["node_modules"],
 }

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from './server';
+import app from '../server/server';
 /* the focus are:
 sending responses, status codes errors and good and json objects 
 interactions with the database 
