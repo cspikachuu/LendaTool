@@ -16,9 +16,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //test
-app.get("/", (req: Request, res: Response) => {
-  res.json("hi");
-});
+app.use(express.static(path.resolve(__dirname, "../client")))
 
 
 app.use("*", (req: Request, res: Response) =>

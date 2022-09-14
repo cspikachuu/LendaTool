@@ -4,10 +4,13 @@ import { Provider } from "react-redux";
 import App from "./App";
 import store from "./store";
 import "./styles.css";
+import { HashRouter } from "react-router-dom";
 
 render(
   <Provider store={store}>
-    <App />
+    <HashRouter>
+      <App/>
+    </HashRouter>
   </Provider>,
   document.getElementById("root")
 );
