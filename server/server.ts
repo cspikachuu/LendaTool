@@ -1,17 +1,10 @@
 import express from 'express';
-const app = express();
+const app: Application = express();
 import path from "path";
-const PORT = 3000;
-
+const PORT: number = 3000;
+const toolRouter = require('./routes/tool')
 // import "dotenv/config";
-import {
-  Request,
-  Response,
-  NextFunction,
-  RequestHandler,
-  ErrorRequestHandler,
-  application,
-} from "express";
+import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,11 +12,17 @@ app.use(express.urlencoded({ extended: true }));
 // app.get("/", (req: Request, res: Response) => {
 //   res.json("hi");
 // });
+app.get('/', (req : Request, res: Response, next: NextFunction) => {
+  res.sendFile(path.resolve(__dirname, '../index.html'));
+});
 
+app.use('/tools', toolRouter);
 
 app.use("*", (req: Request, res: Response) =>
   res.status(404).send("Invalid route.")
 );
+
+
 
 /**
  * express error handler
