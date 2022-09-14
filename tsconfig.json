@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2022"],
-    "module": "commonjs",
+    "module": "CommonJS",
     //double check this baseUrl prop
     "baseUrl": "./server",
     "target": "es2022",
@@ -16,7 +16,7 @@
     "outDir": "./build",
   },
   // "include": ["__tests__/**/*", "server/**/*", "dummy-functions", "dummy-microservice", "packages/**/*", "client/**/*"],
-  "include": ["server/**/*", "client/**/*"],
+  "include": ["server/**/*", "client/**/*", "client/*"],
   // "include": ["server/**/*"],
   "exclude": ["node_modules"],
 }

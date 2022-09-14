@@ -5,17 +5,22 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: process.env.NODE_ENV,
-    entry: './client/App.tsx',
+    entry: './client/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
+        publicPath: '/client/',
         filename: 'bundle.js',
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
+              test: /\.jsx?/,
+              exclude: /node_modules/,
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react'],
+                plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+              },
             },
             {
                 test: /\.tsx?$/,
@@ -29,6 +34,13 @@ module.exports = {
                 {
                   loader: 'style-loader',
                 },
+                // {
+                //   loader: 'typings-for-css-modules-loader',
+                //   options: {
+                //     modules: true,
+                //     namedExport: true
+                //   }
+                // },
                 {
                   loader: 'css-loader',
                 },
@@ -82,18 +94,24 @@ module.exports = {
             // minify: false,
         }),
         new CopyPlugin({
-            patterns: [{ from: './client/style.css' }],
+            patterns: [{ from: './client/styles.css' }],
         }),
     ],
     devServer: {
         static: {
-            directory: path.join(__dirname, './dist'),
+            directory: path.join(__dirname, 'client'),
+            publicPath: '/client'
         },
+        host: 'localhost',
         port: 8080,
+        compress: true,
         hot: true,
         proxy: {
-            '/*': 'http://localhost:3000',
-            secure: false
+          '/**': {
+            target: 'http://localhost:3000/',
+            secure: false,
+            // changeOrigin: true,
+          }
         }
     },
 
