@@ -8,7 +8,7 @@ module.exports = {
     entry: './client/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
-        publicPath: '/client/',
+        publicPath: '/',
         filename: 'bundle.js',
     },
     module: {
@@ -88,10 +88,11 @@ module.exports = {
     plugins: [
         /* Creating a new index.html file in the dist folder. */
         new HtmlWebpackPlugin({
+            title: 'Development',
             template: './client/index.html',
-            filename: './index.html',
-            // inject: false,
-            // minify: false,
+            // filename: './index.html',
+            inject: false,
+            minify: false,
         }),
         new CopyPlugin({
             patterns: [{ from: './client/styles.css' }],
