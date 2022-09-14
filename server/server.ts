@@ -1,7 +1,8 @@
-
 import express from 'express';
 const app = express();
 import path from "path";
+const PORT = 3000;
+
 // import "dotenv/config";
 import {
   Request,
@@ -12,13 +13,12 @@ import {
   application,
 } from "express";
 
-const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//test
-app.get("/", (req: Request, res: Response) => {
-  res.json("hi");
-});
+
+// app.get("/", (req: Request, res: Response) => {
+//   res.json("hi");
+// });
 
 
 app.use("*", (req: Request, res: Response) =>
@@ -44,6 +44,9 @@ const globalErrorHandler: ErrorRequestHandler = (
 app.use(globalErrorHandler);
 
 // server message
-app.listen(3000, () => {
-  console.log(`Server listening on port: 3000`);
+//not allowing jest to exit
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
 });
+
+export default app;
