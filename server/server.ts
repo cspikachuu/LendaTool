@@ -12,6 +12,7 @@ const sessionController = require('./controllers/sessionController');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 
 
 app.get('/', (req : Request, res: Response, next: NextFunction) => {
@@ -27,14 +28,21 @@ app.use('/', sessionController.isLoggedIn, (req: Request, res: Response) => {
 //CHECKS SESSION
 
 
+=======
+>>>>>>> dev
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 app.use('/user', userRouter);
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 
+//CHECKS SESSION
+app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response) => {
+    res.status(200).json(res.locals.status)
+});
+//CHECKS SESSION
 
 //CHECKS SESSION
-app.use('/', sessionController.isLoggedIn, (req: Request, res: Response) => {
-    res.status(200).redirect('/market');
+app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response) => {
+    res.status(200).json(res.locals.status)
 });
 //CHECKS SESSION
 

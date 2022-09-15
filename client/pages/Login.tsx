@@ -11,7 +11,7 @@ import {
   Square,
   Container
 } from "@chakra-ui/react";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import type { RootState, AppDispatch } from '../store'
 
 
@@ -20,21 +20,21 @@ export default function Login() {
   const [password, setPassword] = React.useState('');
   const userInfo = useSelector((state: RootState) => state.markets.userInfo);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   async function login(){
-      // const data = await fetch('/login', {
+      // const data = await fetch('/user/login', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ username: username, password: password })
       // }).then(resp => resp.json())
       //   .catch(err => console.log('error in /auth/login'))
 
-      // if (data === null) {
+      // if (data === false) {
       //   //tell user that login credentials were wrong
       //   console.log('invalid credentials')
       // } else {
 
-      //   GetUserInfo(data);//updates our global state
+      //   dispatch(actions.GetUserInfo(data));
       //   navigate("/profile", { replace: true }) //navigates to profile if login was successful
       // }
        console.log(userInfo)
