@@ -21,17 +21,18 @@ const userController = {
     },
 
   createUser: async (req: Request, res: Response, next: NextFunction) => {
-    console.log("in createUser");
 
     
     try {
-      const hashedPass = await bcrypt.hash(req.body.password, 10);
-      const params = [req.body.username, req.body.password, req.body.firstname, req.body.lastname];
-      const text= "INSERT INTO users (username, password, firstname, lastname) VALUES ($1, $2, $3, $4) RETURNING user_id, username"
-      // console.log(params)
-      const newUserQuery = await db.query(text, params);
-      console.log(newUserQuery)
-      res.locals.registered = true;
+      
+      const {username, password, firstname, lastname} = req.body
+      const hashedPass = await bcrypt.hash(password, 10);
+      const query= "INSERT INTO users (username, password, firstname, lastname) VALUES ($1, $2, $3, $4) RETURNING user_id, username"
+
+      const newUserQuery = await db.query(query, [username, hashedPass, firstname, lastname]);
+      
+
+      res.locals.registered = newUserQuery
       return next();
     }
     catch (err) {
