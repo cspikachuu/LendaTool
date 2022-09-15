@@ -1,0 +1,62 @@
+#body {
+  background-color: rgb(249, 151, 52);
+}
+#welcome-container {
+  padding: 15px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+#signup-container{
+  margin: auto;
+  padding: 15px;
+  max-width: 50vw;
+  background-color: #FEECD7;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#login-container {
+  margin: auto;
+  padding: auto;
+  /* max-width: 50vw; */
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aliceblue;
+}
+
+#banner{
+  margin: 50px auto 50px;
+  padding: auto;
+  /* background-color: rgb(136, 45, 23); */
+  color: white;
+  max-width: 25vw;
+  border-radius: 5px;
+  font-weight: bold;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#market{
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  grid-template-rows: 1fr;
+}
+
+#market-container{
+  display: grid;
+  grid-area: 1 / 1;
+}
+
+#filters{
+  grid-area: 1 / 2;
+}
