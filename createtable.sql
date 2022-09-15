@@ -1,5 +1,5 @@
 CREATE TABLE  users (
-	"user_id" int NOT NULL,
+	"user_id" serial NOT NULL,
 	"firstname" char NOT NULL,
 	"lastname" char NOT NULL,
 	"career" char,
@@ -8,12 +8,12 @@ CREATE TABLE  users (
 );
 
 CREATE TABLE  tools (
-	"tool_id" int NOT NULL,
+	"tool_id" serial NOT NULL,
 	"listingName" char NOT NULL,
   "photo" char,
 	"condition" char NOT NULL,
 	"type" char NOT NULL,
-	"price" char NOT NULL,
+	"price" int NOT NULL,
 	"status" boolean NOT NULL,
 	"dateCreated" TIMESTAMP NOT NULL,
   "user_id" int NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE  tools (
 
 
 CREATE TABLE  borrower (
-	"borrower_id" int NOT NULL,
+	"borrower_id" serial NOT NULL,
 	"user" char NOT NULL,
 	"tool_id" int NOT NULL,
   "user_id" int NOT NULL,
@@ -50,5 +50,14 @@ ALTER TABLE tools
 	  REFERENCES borrower ("borrower_id")
     ON DELETE SET NULL;
 
+ ALTER TABLE users
+		ADD CONSTRAINT "fk_tool" FOREIGN KEY("tool_id")
+	  REFERENCES tools ("tool_id")
+    ON DELETE CASCADE;
+
 ALTER TABLE users
   ADD "password" varchar;
+
+ALTER TABLE users
+ADD "username" varchar;
+
