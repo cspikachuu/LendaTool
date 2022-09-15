@@ -5,8 +5,8 @@ const cookieController = {
   setCookie: async (req: Request, res: Response, next: NextFunction) => {
     console.log("in setCookie");
     //what do I put in cookie??
-    const userInfo = res.locals.newUser;
-    res.cookie('username', userInfo.username);
+    const userInfo = res.locals.user.username;
+    res.cookie('username', userInfo);
     return next();
       
     },

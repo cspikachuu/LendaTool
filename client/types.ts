@@ -30,7 +30,7 @@ export type userInfoAction = {
 //update userInfo
 //update filters
 export type Listing = {
-  listingName: string,
+  name: string,
   photo: string,
   description: string,
   price: Number,
@@ -44,10 +44,10 @@ export type Listing = {
 export type Listings = Listing []
 
 export type User = {
-    userID: string,
+    user_id: string,
     username: string,
-    firstName: string,
-    lastName: string,
+    firstname: string,
+    lastname: string,
     password: string,
 }
 

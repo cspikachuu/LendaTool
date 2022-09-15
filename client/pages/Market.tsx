@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { IconMenu2 } from "@tabler/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
+import SavedItems from "../components/SavedItems";
 import {
   Input,
   Menu,
@@ -15,7 +16,7 @@ import {
 
 export default function Market() {
   //load user listings '/tools/username
-  const publicListings = useSelector((state: RootState) => state.markets.userListings);
+  const publicListings = useSelector((state: RootState) => state.markets.publicListings);
   return (
     <>
       <Menu>
@@ -28,7 +29,7 @@ export default function Market() {
         <MenuList>
           <MenuItem><Link to="/profile">Profile</Link></MenuItem>
           <MenuItem><Link to="/market">Marketplace</Link></MenuItem>
-          <MenuItem>Saved Items</MenuItem>
+          <SavedItems />
         </MenuList>
       </Menu>
       <Input color='white' placeholder='Search' _placeholder={{ opacity: 0.4, color: 'inherit' }}/>

@@ -11,9 +11,9 @@ router.get('/', toolController.getAllTools, (req: Request, res: Response, next: 
   return res.status(200).json('tools retrieved');
 });
 
-router.post('/:id', toolController.addTool, (req: Request, res: Response, next: NextFunction) => {
+router.post('/', toolController.addTool, (req: Request, res: Response, next: NextFunction) => {
   return res.status(200).json('tool added');
-  ;
+
 });
 
 router.get('/:id', toolController.getTool, (req: Request, res: Response, next: NextFunction) => {
@@ -33,7 +33,7 @@ router.put('/:id', toolController.updateTool, (req: Request, res: Response, next
 // });
 
 router.use("*", (req: Request, res: Response) =>
-  res.status(404).send("Invalid route.")
+  res.status(404).json("Invalid tool route.")
 );
 
 router.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => { // NEEDS ALL PARAMS, IN EXACT ORDER 

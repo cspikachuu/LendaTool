@@ -20,8 +20,9 @@ const toolController = {
   },
 
   addTool: async (req: Request, res: Response, next: NextFunction) => {
-    const { name, photo, condition, type, price, status, description } = req.body;
-    const {username} = req.params
+    const { name, photo, condition, type, price, status, description, username } = req.body;
+    console.log(req.body)
+    // const {username} = req.params
     const query = "INSERT INTO tools (name, username, photo, condition, type, price, status, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)"
     
     try {
@@ -94,10 +95,10 @@ const toolController = {
 //   },
 
   // getBtool:  async (req: Request, res: Response, next: NextFunction) => {
-  //   const {userId} = req.params
+  //   const {user_id} = req.params
 
   //   try {
-  //     const tool = await db.query("SELECT tool_id FROM borrower WHERE user_id = $1", [userId])
+  //     const tool = await db.query("SELECT tool_id FROM borrower WHERE user_id = $1", [user_id])
   
   //     return res.status(200).json('Borrowed tool retrieved')
   //   }

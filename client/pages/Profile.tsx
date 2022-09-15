@@ -57,10 +57,11 @@ export default function Profile () {
   
   async function addListing(){
     try {
+      console.log("userInfo",userInfo)
       const listing: Listing = {
         //condition
-        listingName: listingName,
-        lister: userInfo.userID,
+        name: listingName,
+        lister: userInfo.user_id,
         photo: photoURL,
         description: description,
         price: price,
@@ -73,10 +74,13 @@ export default function Profile () {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
-          listing: listing
+          listing: listing,
+          username: userInfo.username
         })
       }
-      const updatedListing = await fetch('/tools', post);
+
+
+      const updatedListing = await fetch(`/tools`, post);
       const parsedUpdatedListing = await updatedListing.json()
       dispatch(actions.GetUserListing(parsedUpdatedListing))
     }
