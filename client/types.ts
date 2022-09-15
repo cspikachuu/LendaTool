@@ -35,15 +35,35 @@ export type Listing = {
   description: string,
   price: Number,
   lister: string,
-  status: Boolean,
+  status: boolean,
   dateCreated: Date,
-  category: string
+  type: string,
+  condition: string,
+  borrower?: string
 }
 export type Listings = Listing []
 
 export type User = {
     userID: string,
+    username: string,
     firstName: string,
     lastName: string,
-    email: string,
+    password: string,
 }
+
+/*
+types:
+Drills
+Saws
+Sanders
+Grinders
+Oscillating and rotary tools
+Woodworking power tool
+Concrete power tools
+Compressors and accessories
+Other
+
+
+User
+Career: string
+*/

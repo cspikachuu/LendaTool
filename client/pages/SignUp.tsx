@@ -18,7 +18,7 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   async function signup(){
-    //add route
+    //add route '/user'
     navigate("/login", { replace: true })
   }
 

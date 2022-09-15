@@ -38,6 +38,7 @@ export default function Profile () {
   const [price, updatePrice] = useState(0)
   const [category, updateCategory] = useState("")
   const [photoURL, updatePhotoURL] = useState("")
+  const [condition, updateCondition] = useState("")
     
   function separateListings(listings: Listings): void {
     const reserved: Listings = [];
@@ -56,14 +57,16 @@ export default function Profile () {
   async function addListing(){
     try {
       const listing: Listing = {
+        //condition
         listingName: listingName,
         lister: userInfo.userID,
         photo: photoURL,
         description: description,
         price: price,
         status: false,
-        category: category,
-        dateCreated: new Date(Date.now())
+        type: category,
+        dateCreated: new Date(Date.now()),
+        condition: condition
       } 
       const post = {
         method: "POST",
@@ -114,6 +117,8 @@ export default function Profile () {
               }}/>
             <FormLabel>Description</FormLabel>
             <Input id="description" type="text" onChange={(e)=>{updateDescription(e.target.value)}}/>
+            <FormLabel>Condition</FormLabel>
+            <Input id="condition" type="text" onChange={(e)=>{updateCondition(e.target.value)}}/>
             <FormLabel>Price / day</FormLabel>
             <Input id="price" type="number" onChange={(e)=>{updatePrice(Number(e.target.value))}}/>
             <FormLabel>Category</FormLabel>
@@ -132,7 +137,7 @@ export default function Profile () {
       <Divider />
       <div id="profile-listings">
         <div id="reserved-profile-listings">
-          reserved
+          reserved add delete button 
           {reservedListings}
         </div>
         <Divider />

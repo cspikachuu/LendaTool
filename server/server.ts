@@ -1,8 +1,9 @@
 import express from 'express';
+const cookieParser = require('cookie-parser');
 const app: Application = express();
 import path from "path";
 const PORT: number = 3000;
-const toolRouter = require('./routes/tool')
+const toolRouter = require('./routes/toolRouter')
 // import "dotenv/config";
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 
@@ -11,6 +12,7 @@ const sessionController = require('./controllers/sessionController');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 app.use('/user', userRouter);
@@ -22,11 +24,6 @@ app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response
 });
 //CHECKS SESSION
 
-//CHECKS SESSION
-app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response) => {
-    res.status(200).json(res.locals.status)
-});
-//CHECKS SESSION
 
 app.use('/tools', toolRouter);
 
