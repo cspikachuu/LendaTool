@@ -12,24 +12,6 @@ const sessionController = require('./controllers/sessionController');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-<<<<<<< HEAD
-
-
-app.get('/', (req : Request, res: Response, next: NextFunction) => {
-  res.sendFile(path.resolve(__dirname, '../index.html'));
-});
-
-app.use('/tools', toolRouter);
-
-//CHECKS SESSION
-app.use('/', sessionController.isLoggedIn, (req: Request, res: Response) => {
-    res.status(200).redirect('/market');
-});
-//CHECKS SESSION
-
-
-=======
->>>>>>> dev
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 app.use('/user', userRouter);
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
@@ -45,11 +27,6 @@ app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response
     res.status(200).json(res.locals.status)
 });
 //CHECKS SESSION
-
-
-//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
-app.use('/user', userRouter);
-//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 
 app.use('/tools', toolRouter);
 
