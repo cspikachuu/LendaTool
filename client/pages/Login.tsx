@@ -12,12 +12,13 @@ import {
   Container
 } from "@chakra-ui/react";
 import { useSelector } from 'react-redux'
+import type { RootState, AppDispatch } from '../store'
 
 
 export default function Login() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const userInfo = useSelector((state) => state.markets.userInfo);
+  const userInfo = useSelector((state: RootState) => state.markets.userInfo);
   const navigate = useNavigate();
 
   async function login(){
