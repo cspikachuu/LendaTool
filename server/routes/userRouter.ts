@@ -20,11 +20,11 @@ import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, A
 // });
 
 router.post('/signup', userController.createUser, (req: Request, res: Response, next: NextFunction) => {
-  return res.status(200).redirect('/login');
+  return res.sendStatus(200);
 });
 
 router.post('/login', userController.verifyUser, cookieController.setCookie, (req: Request, res: Response, next: NextFunction) => {
-  return res.status(200).redirect('/market');
+  return res.sendStatus(200);
 });
 
 router.use("*", (req: Request, res: Response) =>

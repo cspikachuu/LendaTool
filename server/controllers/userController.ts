@@ -1,5 +1,5 @@
 //Imports and requirements here
-const db = require('../db');
+const db = require('../models/dbModel');
 //change above to match our database
 const bcrypt = require('bcryptjs'); //is it still bcrypt with "js" or change to "ts" ??
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
@@ -8,7 +8,6 @@ import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, A
 const userController = {
 
   getAllUsers: async (req: Request, res: Response, next: NextFunction) => {
-    console.log("in geAllUsers");
     const getQuery = 'SELECT * FROM Users';
     try {
       const data = await db.query(getQuery);

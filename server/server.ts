@@ -24,18 +24,15 @@ app.use(express.urlencoded({ extended: true }));
 //test
 app.use(express.static(path.resolve(__dirname, "../client")))
 
-
-//CHECKS SESSION
-app.use('/', sessionController.isLoggedIn, (req: Request, res: Response) => {
-    res.status(200).redirect('/market');
-});
-//CHECKS SESSION
-
-
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 app.use('/user', userRouter);
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 
+//CHECKS SESSION
+app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response) => {
+    res.status(200).json(res.locals.status)
+});
+//CHECKS SESSION
 
 
 app.use("*", (req: Request, res: Response) =>

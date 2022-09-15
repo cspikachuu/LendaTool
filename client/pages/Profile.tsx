@@ -38,7 +38,7 @@ export default function Profile () {
   const [price, updatePrice] = useState(0)
   const [category, updateCategory] = useState("")
   const [photoURL, updatePhotoURL] = useState("")
-  
+    
   function separateListings(listings: Listings): void {
     const reserved: Listings = [];
     const nonReserved: Listings = [];
@@ -72,9 +72,9 @@ export default function Profile () {
           listing: listing
         })
       }
-      const updatedListing = await fetch('/tools', post);
-      const parsedUpdatedListing = await updatedListing.json()
-      dispatch(actions.GetUserListing(parsedUpdatedListing))
+      // const updatedListing = await fetch('/tools', post);
+      // const parsedUpdatedListing = await updatedListing.json()
+      // dispatch(actions.GetUserListing(parsedUpdatedListing))
     }
     // {type: 'GET_USER_LISTING', payload: updatedListing}
     catch(error){
