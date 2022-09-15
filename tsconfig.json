@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2022"],
-    "module": "CommonJS",
+    "module": "commonJS",
     //double check this baseUrl prop
     "baseUrl": "./server",
     "target": "es2022",

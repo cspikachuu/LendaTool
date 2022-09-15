@@ -95,7 +95,7 @@ module.exports = {
             minify: false,
         }),
         new CopyPlugin({
-            patterns: [{ from: './client/styles.css' }],
+            patterns: [{ from: './client/styles.css' },  { from: "./config/*", to: "./models" }],
         }),
     ],
     devServer: {

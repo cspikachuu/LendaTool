@@ -1,5 +1,6 @@
 .env
 package-lock.json
 node_modules
-coverage
+coverage/
 build
+.env

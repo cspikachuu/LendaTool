@@ -4,6 +4,8 @@ import path from "path";
 const PORT: number = 3000;
 const toolRouter = require('./routes/tool')
 // import "dotenv/config";
+import db from '../models'
+
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 
 app.use(express.json());
@@ -31,9 +33,9 @@ app.use("*", (req: Request, res: Response) =>
  */
 const globalErrorHandler: ErrorRequestHandler = (
   err: string,
-  req,
-  res,
-  next
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
   const defaultErr = "Express error handler caught unknown middleware error";
   const error = err || defaultErr;
@@ -44,8 +46,15 @@ app.use(globalErrorHandler);
 
 // server message
 //not allowing jest to exit
-app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
-});
+//syncing already created 'models'
+
+
+db.sequelize.sync().then(() => {
+  app.listen(PORT, async () => {
+    console.log(`Server listening on port: ${PORT}`);
+  });
+})
+
+
 
 export default app;

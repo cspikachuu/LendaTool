@@ -1,17 +1,14 @@
 const path = require('path');
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 
-export interface Controllers {
-  toolController: Function;
 
-}
+// //handling of the request
+// interface Abc {
 
-
-//handling of the request
-
-module.exports= {
+// }
+// module.exports = {
   
-  toolController.getTools = (req : Request, res: Response, next: NextFunction) => {
+//   toolController.getTools = (req : Request, res: Response, next: NextFunction) => {
 
-}
-}
+// }
+// }
