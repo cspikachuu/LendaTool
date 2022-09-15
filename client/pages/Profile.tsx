@@ -5,6 +5,7 @@ import { IconMenu2 } from "@tabler/icons";
 import * as actions from "../actions/actions"
 import { RootState } from "../store";
 import { Listings, Listing } from "../types"
+import SavedItems from "../components/SavedItems";
 import {
   Menu,
   MenuButton,
@@ -56,10 +57,11 @@ export default function Profile () {
   
   async function addListing(){
     try {
+      console.log("userInfo",userInfo)
       const listing: Listing = {
         //condition
-        listingName: listingName,
-        lister: userInfo.userID,
+        name: listingName,
+        lister: userInfo.user_id,
         photo: photoURL,
         description: description,
         price: price,
@@ -72,14 +74,16 @@ export default function Profile () {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
-          listing: listing
+          listing: listing,
+          username: userInfo.username
         })
       }
-      // const updatedListing = await fetch('/tools', post);
-      // const parsedUpdatedListing = await updatedListing.json()
-      // dispatch(actions.GetUserListing(parsedUpdatedListing))
+
+
+      const updatedListing = await fetch(`/tools`, post);
+      const parsedUpdatedListing = await updatedListing.json()
+      dispatch(actions.GetUserListing(parsedUpdatedListing))
     }
-    // {type: 'GET_USER_LISTING', payload: updatedListing}
     catch(error){
       console.log(error);
     }
@@ -100,7 +104,7 @@ export default function Profile () {
         <MenuList>
           <MenuItem><Link to="/profile">Profile</Link></MenuItem>
           <MenuItem><Link to="/market">Marketplace</Link></MenuItem>
-          <MenuItem>Saved Items</MenuItem>
+          <SavedItems />
         </MenuList>
       </Menu>
 

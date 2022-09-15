@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Listing } from "../types"
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store";
 import { 
   Image,
   Box,
@@ -9,7 +11,7 @@ import {
 
 export default function Listing(props: Listing){
   const {
-    listingName,
+    name,
     photo,
     description,
     price,
@@ -18,10 +20,12 @@ export default function Listing(props: Listing){
     dateCreated,
     type
   } = props;
-
+  
+  const currentUser = useSelector((state: RootState) => state.markets.userInfo);
+  
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" className="listing">
-      <Image src={photo} alt={listingName}/>
+      <Image src={photo} alt={name}/>
       
       <Box p="6">
         <Box display="flex" alignItems="baseline">
@@ -47,8 +51,8 @@ export default function Listing(props: Listing){
           / day
         </Box>
       </Box>
-      <Button style={{margin: '25px 0px', padding: 'auto'}} colorScheme="orange" >Reserve db write to tools** and borrowers</Button>
-      
+      { (currentUser.user_id !== lister) ? <Button style={{margin: '25px 0px', padding: 'auto'}} colorScheme="orange" >Reserve</Button> : null}
+      { (currentUser.user_id === lister ) ?<Button style={{margin: '25px 0px', padding: 'auto'}} colorScheme="orange" variant="ghost">Delete</Button> : null}
     </Box>
   );
 }

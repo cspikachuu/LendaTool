@@ -24,9 +24,9 @@ export const GetSavedItems = (savedItems: Listings): savedItemsAction => ({
 })
 
 //update userInfo
-export const GetUserInfo = (userInfo: User): userInfoAction => ({
+export const GetUserInfo = (newUserInfo: User): userInfoAction => ({
   type: "GET_USER_INFO",
-  payload: userInfo,
+  payload: newUserInfo,
 })
 
 //update filters

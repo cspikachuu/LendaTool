@@ -35,7 +35,10 @@ export default function Login() {
       console.log('invalid credentials')
     } else {
 
-      dispatch(actions.GetUserInfo(data));
+      const {user_id, username, firstname, lastname, password} = data
+      const newUserInfo = {user_id, username, firstname, lastname, password}
+      console.log('deconstructed',userInfo);
+      await dispatch(actions.GetUserInfo(newUserInfo));
       navigate("/profile", { replace: true }) //navigates to profile if login was successful
     }
     //  console.log(userInfo)

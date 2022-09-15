@@ -28,7 +28,7 @@ app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response
 app.use('/tools', toolRouter);
 
 app.use("*", (req: Request, res: Response) =>
-  res.status(404).send("Invalid route.")
+  res.status(404).json("Invalid route.")
 );
 
 /**

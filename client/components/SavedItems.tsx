@@ -12,7 +12,7 @@ import {
   Button
 } from '@chakra-ui/react'
 
-function DrawerExample() {
+export default function SavedItems() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
@@ -25,7 +25,6 @@ function DrawerExample() {
         isOpen={isOpen}
         placement='right'
         onClose={onClose}
-        finalFocusRef={btnRef}
       >
         <DrawerOverlay />
         <DrawerContent>

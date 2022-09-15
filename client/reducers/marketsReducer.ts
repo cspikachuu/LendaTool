@@ -13,10 +13,10 @@ const initialState: State = {
   publicListings : [],
   userListings : [],
   userInfo: {
-    userID: "",
+    user_id: "",
     username: "",
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     password: ""
   },
   searchBar: "",
@@ -38,9 +38,10 @@ const marketReducer = (state = initialState, action: any) => {
         });
         
     case "GET_USER_INFO":
-      const { userInfo } = action.payload;
+      const newUserInfo = action.payload;
+      console.log('in userinfo reducer', newUserInfo)
       return Object.assign({}, state, {
-        userInfo: userInfo
+        userInfo: newUserInfo
       });
 
     case "GET_SAVED_ITEMS":

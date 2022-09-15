@@ -32,7 +32,7 @@ const userController = {
       const newUserQuery = await db.query(query, [username, hashedPass, firstname, lastname]);
       
 
-      res.locals.registered = newUserQuery
+      res.locals.registered = true
       return next();
     }
     catch (err) {
@@ -50,11 +50,11 @@ const userController = {
         [username]
       );
       // if (theUser.length === 0 || !bcrypt.compareSync(password, theUser[0].password))
-      if (existingUser.rowCount === 0 || !bcrypt.compareSync(password, existingUser.password)) {
+      if (existingUser.rows.length === 0 || !bcrypt.compareSync(password, existingUser.rows[0].password)) {
         res.locals.user = false;
         return res.status(200).json(res.locals.user)
       } else {
-        res.locals.user = existingUser; //existingUser.rows ????
+        res.locals.user = existingUser.rows[0]; //existingUser.rows ????
         return next();
       }
 
