@@ -1,6 +1,6 @@
 //Imports and requirements here
-const db = require('../db');
-//change above to match our database
+const db = require('../models/sqlModel');
+
 const bcrypt = require('bcryptjs'); //is it still bcrypt with "js" or change to "ts" ??
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 

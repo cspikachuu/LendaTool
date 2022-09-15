@@ -21,6 +21,7 @@ CREATE TABLE  tools (
   CONSTRAINT "fk_user" FOREIGN KEY("user_id")
 	  REFERENCES users ("user_id")
     ON DELETE CASCADE
+  
 );
 
 
@@ -37,3 +38,14 @@ CREATE TABLE  borrower (
 	  REFERENCES users ("user_id")
     ON DELETE SET NULL
 );
+
+ALTER TABLE borrower
+  DROP COLUMN "user";
+
+ALTER TABLE tools
+  ADD "borrower_id" int;
+
+  ALTER TABLE tools
+  ADD CONSTRAINT "fk_borrower" FOREIGN KEY ("borrower_id")
+	  REFERENCES borrower ("borrower_id")
+    ON DELETE SET NULL;
