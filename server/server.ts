@@ -6,23 +6,48 @@ const toolRouter = require('./routes/tool')
 // import "dotenv/config";
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 
+const userRouter = require('./routes/userRouter');
+const sessionController = require('./controllers/sessionController');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.get("/", (req: Request, res: Response) => {
-//   res.json("hi");
-// });
+
+
 app.get('/', (req : Request, res: Response, next: NextFunction) => {
   res.sendFile(path.resolve(__dirname, '../index.html'));
 });
 
 app.use('/tools', toolRouter);
 
+//CHECKS SESSION
+app.use('/', sessionController.isLoggedIn, (req: Request, res: Response) => {
+    res.status(200).redirect('/market');
+});
+//CHECKS SESSION
+
+
+//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
+app.use('/user', userRouter);
+//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
+
+
+//CHECKS SESSION
+app.use('/', sessionController.isLoggedIn, (req: Request, res: Response) => {
+    res.status(200).redirect('/market');
+});
+//CHECKS SESSION
+
+
+//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
+app.use('/user', userRouter);
+//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
+
+app.use('/tools', toolRouter);
+
 app.use("*", (req: Request, res: Response) =>
   res.status(404).send("Invalid route.")
 );
-
-
 
 /**
  * express error handler

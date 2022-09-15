@@ -38,7 +38,7 @@ export default function Login() {
       //   navigate("/profile", { replace: true }) //navigates to profile if login was successful
       // }
        console.log(userInfo)
-
+       navigate("/profile", { replace: true })
   }
 
 
