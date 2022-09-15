@@ -22,6 +22,7 @@ const toolController = {
   addTool: async (req: Request, res: Response, next: NextFunction) => {
     const { tool_id, listingName, photo, condition, type, price, status} = req.body;
     const query = "INSERT INTO tools (tool_id, listingName, photo, condition, type, price, status) VALUES ($1)"
+    
     try {
       //need to test 
       const newTool = await db.query(query, [tool_id, listingName, photo, condition, type, price, status])

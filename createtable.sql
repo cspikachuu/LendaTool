@@ -49,3 +49,6 @@ ALTER TABLE tools
   ADD CONSTRAINT "fk_borrower" FOREIGN KEY ("borrower_id")
 	  REFERENCES borrower ("borrower_id")
     ON DELETE SET NULL;
+
+ALTER TABLE users
+  ADD "password" varchar;

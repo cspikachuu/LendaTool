@@ -35,3 +35,5 @@ router.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFun
     console.log(`Global error handler caught error: ${err}`); 
     return res.status(400).send(err);
 });
+
+module.exports = router;

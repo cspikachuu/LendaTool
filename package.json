@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production tsc -p ./tsconfig.json & NODE_ENV=production webpack --config ./webpack.config.js",
+    "build": "NODE_ENV=production tsc -p ./tsconfig.json & NODE_ENV=production webpack --config  ./webpack.config.js",
     "start": "node ./build/server/server.js",
     "dev": "concurrently \"NODE_ENV=development nodemon ./server/server.ts\" \"NODE_ENV=development webpack-dev-server --open --hot\"",
     "test": "NODE_ENV=test jest --coverage --detectOpenHandles"
@@ -60,6 +60,7 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "bcrypt": "^5.0.1",
     "express": "^4.17.2",
     "framer-motion": "^6.5.1",
     "pg": "^8.8.0",

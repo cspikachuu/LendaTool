@@ -42,6 +42,6 @@ router.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFun
 });
 
 
-
+module.exports = router;
 
 
