@@ -7,12 +7,11 @@ import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, A
 const sessionController = {
   isLoggedIn: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!req.cookies.username) return res.locals.status = false;
+      if (!req.cookies.username) res.locals.status = false;
       else {
         res.locals.status = true;
-        return next();
       }
-
+      return next();
       }
       catch (err) {
       return next({ err: "error checking logged in status" });

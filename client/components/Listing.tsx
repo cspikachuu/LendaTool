@@ -16,7 +16,7 @@ export default function Listing(props: Listing){
     lister,
     status,
     dateCreated,
-    category
+    type
   } = props;
 
   return (
@@ -29,7 +29,7 @@ export default function Listing(props: Listing){
             {status === true ? 'Available' : 'Reserved'}
           </Badge>
           <Badge borderRadius="full" px="2" colorScheme="brown">
-            {category}
+            {type}
           </Badge>
           <Box color="gray.500" fontWeight="semibold" letterSpacing="wide" fontSize="xs" textTransform="uppercase" ml="2">
             Provided by {lister}
@@ -47,7 +47,8 @@ export default function Listing(props: Listing){
           / day
         </Box>
       </Box>
-      <Button style={{margin: '25px 0px', padding: 'auto'}} colorScheme="orange" >Reserve</Button>
+      <Button style={{margin: '25px 0px', padding: 'auto'}} colorScheme="orange" >Reserve db write to tools** and borrowers</Button>
+      
     </Box>
   );
 }

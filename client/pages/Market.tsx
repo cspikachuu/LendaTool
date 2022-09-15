@@ -14,6 +14,7 @@ import {
 
 
 export default function Market() {
+  //load user listings '/tools/username
   const publicListings = useSelector((state: RootState) => state.markets.userListings);
   return (
     <>
