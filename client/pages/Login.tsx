@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState, AppDispatch } from '../store'
+import * as actions from "../actions/actions"
 
 
 export default function Login() {
@@ -22,23 +23,23 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   async function login(){
-      // const data = await fetch('/user/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ username: username, password: password })
-      // }).then(resp => resp.json())
-      //   .catch(err => console.log('error in /auth/login'))
+    const data = await fetch('/user/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: username, password: password })
+    }).then(resp => resp.json())
+      .catch(err => console.log('error in /auth/login'))
 
-      // if (data === false) {
-      //   //tell user that login credentials were wrong
-      //   console.log('invalid credentials')
-      // } else {
+    if (data === false) {
+      //tell user that login credentials were wrong
+      console.log('invalid credentials')
+    } else {
 
-      //   dispatch(actions.GetUserInfo(data));
-      //   navigate("/profile", { replace: true }) //navigates to profile if login was successful
-      // }
-       console.log(userInfo)
-       navigate("/profile", { replace: true })
+      dispatch(actions.GetUserInfo(data));
+      navigate("/profile", { replace: true }) //navigates to profile if login was successful
+    }
+    //  console.log(userInfo)
+    //  navigate("/profile", { replace: true })
   }
 
 

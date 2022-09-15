@@ -16,7 +16,8 @@ export default function Welcome(){
 
       const sessionStatus = await fetch('/hasCookie');
       const parsedSessionStatus = await sessionStatus.json();
-      if (sessionStatus) navigate('/market')
+      if (parsedSessionStatus) navigate('/market')
+      else console.log('not authed yet')
     }
     catch(error){
       console.log(error)

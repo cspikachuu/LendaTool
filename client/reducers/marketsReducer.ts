@@ -14,9 +14,10 @@ const initialState: State = {
   userListings : [],
   userInfo: {
     userID: "",
+    username: "",
     firstName: "",
     lastName: "",
-    email: ""
+    password: ""
   },
   searchBar: "",
   savedItems: []
