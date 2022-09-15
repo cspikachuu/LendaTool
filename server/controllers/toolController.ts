@@ -20,12 +20,13 @@ const toolController = {
   },
 
   addTool: async (req: Request, res: Response, next: NextFunction) => {
-    const { tool_id, listingName, photo, condition, type, price, status} = req.body;
-    const query = "INSERT INTO tools (tool_id, listingName, photo, condition, type, price, status) VALUES ($1)"
+    const { name, photo, condition, type, price, status, description } = req.body;
+    const {username} = req.params
+    const query = "INSERT INTO tools (name, username, photo, condition, type, price, status, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)"
     
     try {
       //need to test 
-      const newTool = await db.query(query, [tool_id, listingName, photo, condition, type, price, status])
+      const newTool = await db.query(query, [name, username, photo, condition, type, price, status, description])
       return next() 
     }
     catch (err) {

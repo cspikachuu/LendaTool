@@ -61,3 +61,5 @@ ALTER TABLE users
 ALTER TABLE users
 ADD "username" varchar;
 
+ALTER TABLE tools
+  ADD "description" varchar;
