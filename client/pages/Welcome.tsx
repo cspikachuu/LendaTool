@@ -9,10 +9,10 @@ export default function Welcome(){
   const navigate = useNavigate();
   async function getPublicListings() {
     try{
-      // const publicListings = await fetch('/tools');
-      // const parsedPublicListings = await publicListings.json();
-      // const dispatch = useDispatch();
-      // dispatch(actions.GetPublicListing(parsedPublicListings));
+      const publicListings = await fetch('/tools');
+      const parsedPublicListings = await publicListings.json();
+      const dispatch = useDispatch();
+      dispatch(actions.GetPublicListing(parsedPublicListings));
 
       const sessionStatus = await fetch('/hasCookie');
       const parsedSessionStatus = await sessionStatus.json();
