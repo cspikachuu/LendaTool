@@ -26,7 +26,7 @@ export default function Login() {
     const data = await fetch('/user/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: username, password: password })
+      body: JSON.stringify({ username, password })
     }).then(resp => resp.json())
       .catch(err => console.log('error in /auth/login'))
 

@@ -25,25 +25,17 @@ const userController = {
 
     
     try {
-      const existingUser = await /* db.query or --> */ db.query(
-        "SELECT username from users WHERE username=$1",
-        [req.body.username]
-      );
-
-      if (existingUser.rowCount === 0) {
-        const hashedPass = await bcrypt.hash(req.body.password, 10);
-        const newUserQuery = await db.query(
-          "INSERT INTO users(username, passhash) values($1,$2) RETURNING id, username",
-          [req.body.username, hashedPass]
-        );
-        res.locals.registered = true;
-        return next();
-      }else{ //the ccase where register failss
-        res.locals.registered = false;
-        return next();
-      }
+      const hashedPass = await bcrypt.hash(req.body.password, 10);
+      const params = [req.body.username, req.body.password, req.body.firstname, req.body.lastname];
+      const text= "INSERT INTO users (username, password, firstname, lastname) VALUES ($1, $2, $3, $4) RETURNING user_id, username"
+      // console.log(params)
+      const newUserQuery = await db.query(text, params);
+      console.log(newUserQuery)
+      res.locals.registered = true;
+      return next();
     }
     catch (err) {
+      console.log(err)
       return next({err: "Username taken try another"})
     }
     },

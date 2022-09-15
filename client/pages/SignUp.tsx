@@ -11,15 +11,23 @@ import {
 } from '@chakra-ui/react'
 
 export default function SignUp() {
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
+  const [firstname, setFirstName] = React.useState('');
+  const [lastname, setLastName] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const navigate = useNavigate();
 
   async function signup(){
     //add route '/user'
-    navigate("/login", { replace: true })
+    const data = await fetch("/user/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password, firstname, lastname }),
+    })
+      .then((resp) => resp.json())
+      .catch((err) => console.log("error in /auth/login"));
+    if(data) navigate("/login", { replace: true })
+    else console.log('signup failed, try again')
   }
 
 
