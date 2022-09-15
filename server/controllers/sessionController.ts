@@ -1,5 +1,5 @@
 //Imports here
-const db = require('../models/dbModel');
+const db = require('../models/sqlModel');
 
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 

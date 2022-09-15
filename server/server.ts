@@ -1,28 +1,16 @@
-
 import express from 'express';
-const app = express();
+const app: Application = express();
 import path from "path";
+const PORT: number = 3000;
+const toolRouter = require('./routes/tool')
+// import "dotenv/config";
+import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 
-//THESE MUST BE REQUIRED FOR USER ROUTER AND SESSION
 const userRouter = require('./routes/userRouter');
 const sessionController = require('./controllers/sessionController');
-//THESE MUST BE REQUIRED FOR USER ROUTER AND SESSION
 
-// import "dotenv/config";
-import {
-  Request,
-  Response,
-  NextFunction,
-  RequestHandler,
-  ErrorRequestHandler,
-  application,
-} from "express";
-
-const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//test
-app.use(express.static(path.resolve(__dirname, "../client")))
 
 //ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
 app.use('/user', userRouter);
@@ -34,6 +22,13 @@ app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response
 });
 //CHECKS SESSION
 
+//CHECKS SESSION
+app.get('/hasCookie', sessionController.isLoggedIn, (req: Request, res: Response) => {
+    res.status(200).json(res.locals.status)
+});
+//CHECKS SESSION
+
+app.use('/tools', toolRouter);
 
 app.use("*", (req: Request, res: Response) =>
   res.status(404).send("Invalid route.")
@@ -58,6 +53,9 @@ const globalErrorHandler: ErrorRequestHandler = (
 app.use(globalErrorHandler);
 
 // server message
-app.listen(3000, () => {
-  console.log(`Server listening on port: 3000`);
+//not allowing jest to exit
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
 });
+
+export default app;
