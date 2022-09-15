@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { IconMenu2 } from "@tabler/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store";
 import {
   Input,
   Menu,
@@ -9,10 +11,10 @@ import {
   MenuList,
   MenuItem,
 } from '@chakra-ui/react'
-import {Listings} from "../types"
+
 
 export default function Market() {
-  const listings: Listings = [];
+  const publicListings = useSelector((state: RootState) => state.markets.userListings);
   return (
     <>
       <Menu>
@@ -31,7 +33,7 @@ export default function Market() {
       <Input color='white' placeholder='Search' _placeholder={{ opacity: 0.4, color: 'inherit' }}/>
       <div id="market">
         <div id="market-container">
-          {listings}
+          {publicListings}
         </div>
         <div id="filters">
           Filters

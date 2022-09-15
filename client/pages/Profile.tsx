@@ -81,6 +81,7 @@ export default function Profile () {
       console.log(error);
     }
   }
+  
   const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch();
 
