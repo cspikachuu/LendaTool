@@ -20,18 +20,11 @@ import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, A
 // });
 
 router.post('/signup', userController.createUser, (req: Request, res: Response, next: NextFunction) => {
-  return res.sendStatus(200);
+  return res.status(200).json(res.locals.registered)
 });
 
 router.post('/login', userController.verifyUser, cookieController.setCookie, (req: Request, res: Response, next: NextFunction) => {
-  return res.sendStatus(200);
+  return res.status(200).json(res.locals.user) //frontend should check val of user. if false then 
 });
 
-router.use("*", (req: Request, res: Response) =>
-  res.status(404).send("Invalid route.")
-);
-
-router.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => { // NEEDS ALL PARAMS, IN EXACT ORDER 
-    console.log(`Global error handler caught error: ${err}`); 
-    return res.status(400).send(err);
-});
+module.exports = router

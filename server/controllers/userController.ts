@@ -36,12 +36,12 @@ const userController = {
           "INSERT INTO users(username, passhash) values($1,$2) RETURNING id, username",
           [req.body.username, hashedPass]
         );
-
-        //do we need this res.json ?
-        // res.json({ loggedIn: true, username })
-        
+        res.locals.registered = true;
+        return next();
+      }else{ //the ccase where register failss
+        res.locals.registered = false;
+        return next();
       }
-      return next();
     }
     catch (err) {
       return next({err: "Username taken try another"})
@@ -58,9 +58,10 @@ const userController = {
       );
       // if (theUser.length === 0 || !bcrypt.compareSync(password, theUser[0].password))
       if (existingUser.rowCount === 0 || !bcrypt.compareSync(password, existingUser.password)) {
-        return res.redirect('signup');
+        res.locals.user = false;
+        return res.status(200).json(res.locals.user)
       } else {
-        res.locals.newUser = existingUser; //existingUser.rows ????
+        res.locals.user = existingUser; //existingUser.rows ????
         return next();
       }
 
