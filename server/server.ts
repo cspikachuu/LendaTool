@@ -2,6 +2,12 @@
 import express from 'express';
 const app = express();
 import path from "path";
+
+//THESE MUST BE REQUIRED FOR USER ROUTER AND SESSION
+const userRouter = require('./routes/userRouter');
+const sessionController = require('./controllers/sessionController');
+//THESE MUST BE REQUIRED FOR USER ROUTER AND SESSION
+
 // import "dotenv/config";
 import {
   Request,
@@ -17,6 +23,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //test
 app.use(express.static(path.resolve(__dirname, "../client")))
+
+
+//CHECKS SESSION
+app.use('/', sessionController.isLoggedIn, (req: Request, res: Response) => {
+    res.status(200).redirect('/market');
+});
+//CHECKS SESSION
+
+
+//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
+app.use('/user', userRouter);
+//ROUTER FOR USER LOGIN, SIGNUP, AND SESSION
+
 
 
 app.use("*", (req: Request, res: Response) =>
