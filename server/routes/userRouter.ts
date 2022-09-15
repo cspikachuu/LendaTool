@@ -21,6 +21,7 @@ import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, A
 
 router.post('/signup', userController.createUser, (req: Request, res: Response, next: NextFunction) => {
   return res.status(200).json(res.locals.registered)
+  
 });
 
 router.post('/login', userController.verifyUser, cookieController.setCookie, (req: Request, res: Response, next: NextFunction) => {

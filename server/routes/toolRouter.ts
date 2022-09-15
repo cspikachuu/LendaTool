@@ -11,7 +11,7 @@ router.get('/', toolController.getAllTools, (req: Request, res: Response, next: 
   return res.status(200).json('tools retrieved');
 });
 
-router.post('/', toolController.addTool, (req: Request, res: Response, next: NextFunction) => {
+router.post('/:id', toolController.addTool, (req: Request, res: Response, next: NextFunction) => {
   return res.status(200).json('tool added');
   ;
 });
