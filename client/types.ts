@@ -30,21 +30,20 @@ export type userInfoAction = {
 //update userInfo
 //update filters
 export type Listing = {
-  listingID: String,
-  listingName: String,
-  photo: String,
-  description: String,
+  listingName: string,
+  photo: string,
+  description: string,
   price: Number,
-  lister: String,
+  lister: string,
   status: Boolean,
   dateCreated: Date,
-  category: String
+  category: string
 }
 export type Listings = Listing []
 
 export type User = {
-    userID: String,
-    firstName: String,
-    lastName: String,
-    email: String,
+    userID: string,
+    firstName: string,
+    lastName: string,
+    email: string,
 }

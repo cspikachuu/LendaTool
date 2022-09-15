@@ -1,17 +1,13 @@
 import * as React from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IconMenu2 } from "@tabler/icons";
-
-import {Input,
+import {
+  Input,
   Menu,
   MenuButton,
   IconButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider
 } from '@chakra-ui/react'
 import {Listings} from "../types"
 
@@ -28,6 +24,7 @@ export default function Market() {
         />
         <MenuList>
           <MenuItem><Link to="/profile">Profile</Link></MenuItem>
+          <MenuItem><Link to="/market">Marketplace</Link></MenuItem>
           <MenuItem>Saved Items</MenuItem>
         </MenuList>
       </Menu>
