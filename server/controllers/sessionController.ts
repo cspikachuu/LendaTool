@@ -4,6 +4,7 @@ const db = require('../models/sqlModel');
 import { Request, Response, NextFunction, RequestHandler, ErrorRequestHandler, Application} from "express";
 
 
+/* This is a controller that is used to check if a user is logged in. */
 const sessionController = {
   isLoggedIn: async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -33,4 +34,5 @@ const sessionController = {
   //   } 
 };
 
+/* This is exporting the sessionController object to be used in other files. */
 module.exports = sessionController;
